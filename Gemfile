@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
 
 
 gem 'rails', '~> 5.0.0'
@@ -25,6 +25,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'chromedriver-helper'
 end
 

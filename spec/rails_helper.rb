@@ -26,6 +26,18 @@ require 'rspec/rails'
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+if ENV['FEATURE_TEST']
+  require 'capybara/rspec'
+  require 'capybara/rails'
+  Capybara.default_max_wait_time = 10
+
+  Capybara.register_driver :chrome do |app|
+    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  end
+
+  Capybara.default_driver = :chrome
+end
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
