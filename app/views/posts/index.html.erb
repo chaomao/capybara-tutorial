@@ -1,3 +1,7 @@
+<div class="parent">
+
+<div class="left">
+
 <p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
@@ -7,6 +11,7 @@
     <tr>
       <th>Title</th>
       <th>Content</th>
+      <th>Visit Count</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +21,7 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.content %></td>
+        <td><%= post.visit_count %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,5 +33,14 @@
 <br>
 
 <%= link_to 'New Post', new_post_path %>
+</div>
+<div class="right">
+<h1>TOP 10 Posts</h1>
+<div class="top-10-container">
+  <span class="tips"></span>
+  <ul class='top-10-list'>
 
-<p class="ajax-area">initialize</p>
+  </ul>
+</div>
+</div>
+</div>

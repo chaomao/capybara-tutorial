@@ -23,6 +23,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'ffaker'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'selenium-webdriver'

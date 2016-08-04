@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
+  def top_10
+    render json: Post.order(visit_count: :desc).limit(10).to_a
+  end
+
   # GET /posts
   # GET /posts.json
   def index

@@ -2,7 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.ajax-area {
-  font-size: 40px;
-  color: red;
+.top-10-container {
+  .tips {
+    display: block;
+  }
+  .top-10-list {
+    display: none;
+  }
+}
+
+.parent {
+  display: flex;
+
+  .left {
+    flex: 3;
+  }
+  .right {
+    flex: 1;
+  }
 }
