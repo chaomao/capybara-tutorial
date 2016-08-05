@@ -29,7 +29,13 @@ RSpec.feature 'post feature', type: :feature do
     expect(page).to have_content('Post was successfully updated.')
     
     visit '/posts'
-
+   
+    expect(page).to have_css("table td", text: "my second edit post")
+    expect(page).to have_content('initialize component')
+    sleep(5)
+    expect(page).not_to have_content('start loading...')
+    sleep(1)
+    expect(find(:xpath, '//ul/li').text).to have_content('my second edit post')
 
   end
 end
