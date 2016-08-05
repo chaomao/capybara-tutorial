@@ -27,9 +27,9 @@ RSpec.feature 'post feature', type: :feature do
     click_button('Update Post')
 
     expect(page).to have_content('Post was successfully updated.')
+
+    click_link 'Back'
     
-    visit '/posts'
-   
     expect(page).to have_css("table td", text: "my second edit post")
     expect(page).to have_content('initialize component')
     sleep(5)
