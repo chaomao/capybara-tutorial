@@ -14,8 +14,22 @@ RSpec.feature 'post feature', type: :feature do
     sleep(1)
     click_button('Create Post')
     sleep(1)
+    expect(page).to have_content('Post was successfully created.')
     visit '/posts'
     sleep(1)
     expect(page).to have_content('my first post')
+
+    click_link('Edit')
+    
+    fill_in('post_title', with: 'my second edit post')
+    fill_in('post_content', with: 'I wanna be the full-stack dev yep')
+    
+    click_button('Update Post')
+
+    expect(page).to have_content('Post was successfully updated.')
+    
+    visit '/posts'
+
+
   end
 end
