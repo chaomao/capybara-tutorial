@@ -1,21 +1,22 @@
 require 'rails_helper'
 
 RSpec.feature 'post feature', type: :feature do
+
   scenario 'create new post' do
     visit '/posts'
-    sleep(1)
+    sleep(5)
     on_page_with :post_list do |page|
-        page.post_list
+        expect(page.posts_in_list.length).to eq(0)
+        sleep(1)
+        page.new_post_link.click
+        sleep(1)
+        page.perform :fill_post, 'my first post', 'I wanna be the full-stack dev'
+        sleep(1)
+        page.create_post_button.click
+        sleep(1)
+        expect(page.notice_message).to eq('Post was successfully created.')
+        page.back_link.click
+        expect(page.posts_in_list.length).to eq(1)
     end
-    click_link('New Post')
-    fill_in('post_title', with: 'my first post')
-    sleep(1)
-    fill_in('post_content', with: 'I wanna be the full-stack dev')
-    sleep(1)
-    click_button('Create Post')
-    sleep(1)
-    visit '/posts'
-    sleep(1)
-    expect(page).to have_content('my first post')
   end
 end
