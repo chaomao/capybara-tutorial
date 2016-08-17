@@ -4,9 +4,9 @@ RSpec.feature 'post feature', type: :feature do
   scenario 'create new post' do
     visit '/posts'
     sleep(1)
-    # expect(page).not_to have_content('initialize')
-    # expect(page).to have_content('start loading...')
-    # expect(page).to have_content('finish loading')
+    on_page_with :post_list do |page|
+        page.post_list
+    end
     click_link('New Post')
     fill_in('post_title', with: 'my first post')
     sleep(1)

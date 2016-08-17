@@ -38,9 +38,18 @@ if ENV['FEATURE_TEST']
   Capybara.default_driver = :chrome
 
   DatabaseCleaner.strategy = :truncation
+  if Object.const_defined? :Capybara
+    module Capybara
+      module DSL
+        alias :response :page
+      end
+    end
+  end
 end
 
 RSpec.configure do |config|
+  include Gizmo::Helpers
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -53,6 +62,10 @@ RSpec.configure do |config|
      DatabaseCleaner.clean
   end
 
+  Gizmo.configure do |config|
+    # this is just so we can use the same page mixins as the cucumber tests
+    config.mixin_dir = "#{::Rails.root}/spec/pages"
+  end
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
