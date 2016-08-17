@@ -26,7 +26,8 @@ require 'rspec/rails'
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
-if ENV['FEATURE_TEST']
+# comment for easy
+#if ENV['FEATURE_TEST']
   require 'capybara/rspec'
   require 'capybara/rails'
   Capybara.default_max_wait_time = 2
@@ -45,7 +46,7 @@ if ENV['FEATURE_TEST']
       end
     end
   end
-end
+#end
 
 RSpec.configure do |config|
   include Gizmo::Helpers
