@@ -20,5 +20,14 @@ RSpec.feature 'post feature', type: :feature do
       expect(page.content).to eq('I wanna be the full-stack dev')
       page.back_link.click
     end
+
+    on_page_with :post_list do |page|
+      expect(page.posts_in_list.length).to eq(1)
+    end
+
+    on_page_with :top_ten_list do |page|
+      expect(page).to have_selector('.top-10-list')
+      expect(page.articles.first).to eq('my first post')
+    end
   end
 end
