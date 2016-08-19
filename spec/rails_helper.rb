@@ -30,7 +30,7 @@ ActiveRecord::Migration.maintain_test_schema!
 #if ENV['FEATURE_TEST']
   require 'capybara/rspec'
   require 'capybara/rails'
-  Capybara.default_max_wait_time = 2
+  Capybara.default_max_wait_time = 10
 
   Capybara.register_driver :chrome do |app|
     Capybara::Selenium::Driver.new(app, :browser => :chrome)
