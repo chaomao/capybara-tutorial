@@ -13,5 +13,12 @@ RSpec.feature 'post feature', type: :feature do
       page.perform :fill_post, 'my first post', 'I wanna be the full-stack dev'
       page.create_post_button.click
     end
+
+    on_page_with :post_new_detail do |page|
+      expect(page.notice_message).to eq('Post was successfully created.')
+      expect(page.title).to eq('my first post')
+      expect(page.content).to eq('I wanna be the full-stack dev')
+      page.back_link.click
+    end
   end
 end
