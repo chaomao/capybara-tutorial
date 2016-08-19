@@ -39,8 +39,9 @@ RSpec.feature 'post feature: ', type: :feature do
     on_page_with :post_list do |page|
       expect(page.posts_in_list.length).to eq(1)
 
-      # expect(page.post_contents).to have_content('my first post')
-      # expect(page.post_contents).to have_content('I wanna be a full-stack dev')
+      expect(page.posts_content.first.text).to have_content('my first post')
+      # expect(page.posts_content.second.text).to have_content('I wanna be a full-stack dev')
+      expect(page.posts_content[1].text).to have_content('I wanna be a full-stack dev')
     end
 
     on_page_with :top_ten do |page|

@@ -9,7 +9,7 @@ module PageWithPostList
 		find('.parent .left .posts').find('tbody').all('tr')
 	end
 
-	def post_contents
+	def posts_content
 		find('.parent .left .posts').find('tbody').find('tr').all('td')
 	end
 
@@ -17,11 +17,11 @@ module PageWithPostList
 		find('.parent .left a[href="/posts/new"]')
 	end
 
-	def edit_post_link
+	def edit_first_post_link
 		find('.parent .left a[href="/posts/1/edit"]')
 	end
 
-	def show_post_link
+	def show_first_post_link
 		find('.parent .left a[href="/posts/1/show"]')
 	end
 
