@@ -38,12 +38,9 @@ RSpec.feature 'post feature', type: :feature do
     on_page_with :post_list do |page|
       expect(page.posts_in_list.length).to eq(1)
       click_link('Destroy')
-      page.accept_confirm do
-        click_link 'Delete'
-      end
+      page.accept_confirm
       expect(page.notice_message).to eq('Post was successfully destroyed.')
     end
-
 
     on_page_with :top_ten_list do |page|
       expect(page).to have_selector('.top-10-list')
