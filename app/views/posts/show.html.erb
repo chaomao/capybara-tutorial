@@ -2,12 +2,12 @@
 
 <p>
   <strong>Title:</strong>
-  <%= @post.title %>
+  <span id="title"><%= @post.title %></span>
 </p>
 
 <p>
   <strong>Content:</strong>
-  <%= @post.content %>
+  <span id="content"><%= @post.content %></span>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
